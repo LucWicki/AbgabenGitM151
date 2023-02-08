@@ -15,5 +15,20 @@ try {
 }
 
 $sql = "SELECT * FROM orders where custumer_id = ['id'] ";
+$order = $_GET['orders'];
+$statement = $conn->prepare($sql);
+$statement->execute([
+    ':order' => $order
+]);
+
+
+while($row = $statement -> fetch()){
+    d($row);
+}
+function d($args){
+    echo "<pre>";
+    var_dump($args);
+    echo "</pre>";
+}
 
 ?>
