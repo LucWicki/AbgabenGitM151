@@ -40,7 +40,7 @@ try {
                 <td> <?php echo $row['first_name']?> </td>
                 <td> <?php echo $row['last_name']?> </td>
                 <td> <?php echo $row['job_title']?> </td>
-                <td> <a href="bestellungen.php"? id=".<?php $_GET['1']?>.">Bestellung Anzeigen</a> </td>
+                <td> <a href="bestellungen.php"? id={$row['id'}>Bestellung Anzeigen</a> </td>
 
             </tr>
              <?php
