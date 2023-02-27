@@ -13,22 +13,33 @@ try {
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+?>
+<table>
+     <tr>
+         <th>Bestellname</th> <!-- ship_name -->
 
+
+     </tr>
+
+<?php
 $sql = "SELECT * FROM orders where custumer_id = ['id'] ";
-$order = $_GET['orders'];
+$order = $_GET['id'];
 $statement = $conn->prepare($sql);
 $statement->execute([
-    ':order' => $order
+    ':id' => $order
 ]);
 
 
-while($row = $statement -> fetch()){
-    d($row);
+while ($row = $statement -> fetch()) {
+    ?>
+    <tr>
+        <td> <?php echo $row['ship_name']?> </td>
+    </tr>
+    <?php
 }
-function d($args){
-    echo "<pre>";
-    var_dump($args);
-    echo "</pre>";
-}
-
 ?>
+
+</table>
+
+
+
