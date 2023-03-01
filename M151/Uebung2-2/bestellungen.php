@@ -16,13 +16,14 @@ try {
 ?>
 <table>
      <tr>
-         <th>Bestellname</th> <!-- ship_name -->
-
-
+         <th>Kundenname    </th> <!-- ship_name -->
+         <th>Addresse      </th>
+         <th>Stadt         </th>
+         <th>State/Province</th>
      </tr>
 
 <?php
-$sql = "SELECT * FROM orders where custumer_id = ['id'] ";
+$sql = "SELECT * FROM orders where customer_id = :id ";
 $order = $_GET['id'];
 $statement = $conn->prepare($sql);
 $statement->execute([
@@ -34,6 +35,10 @@ while ($row = $statement -> fetch()) {
     ?>
     <tr>
         <td> <?php echo $row['ship_name']?> </td>
+        <td> <?php echo $row['ship_address']?> </td>
+        <td> <?php echo $row['ship_city']?> </td>
+        <td> <?php echo $row['ship_state_province']?> </td>
+
     </tr>
     <?php
 }
